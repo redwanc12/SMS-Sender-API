@@ -7,13 +7,13 @@ class Client:
         self.email = email
         self.password = password
 
-    def send_message(self, toNumber, carrierExt, message):
+    def send_message(self, formatted_num, message):
         """Sends a SMS message to a number using its carrier extension"""
         host = smtplib.SMTP( "smtp.gmail.com", 587)
         host.starttls()
         host.login(self.email, self.password)
         host.sendmail(
             self.email,
-            f'{toNumber}{carrierExt}',
+            formatted_num,
             message
         )
